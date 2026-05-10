@@ -26,3 +26,27 @@ def write_yaml_file(file_path: str, content: object, replace: bool = False) -> N
             yaml.dump(content, file)
     except Exception as e:
         raise NetworkSecurityException(e, sys)
+
+
+def save_numpy_arr(file_path, array: np.array):
+    try:
+        dir_path = os.path.dirname(file_path)
+        os.makedirs(dir_path, exist_ok=True)
+        with open(file_path, "wb") as file_object:
+            np.save(file_object, array)
+    except Exception as e:
+        raise NetworkSecurityException(e, sys) from e
+
+
+def save_object(file_path, obj: object):
+    try:
+        logging.info("Enter the Save object method of main utils. ")
+        dir_path = os.path.dirname(file_path)
+        os.makedirs(dir_path, exist_ok=True)
+        with open(file_path, "wb") as file_object:
+            pickle.dump(obj, file_object)
+
+        logging.info("Exit the Save object method of main utils. ")
+
+    except Exception as e:
+        raise NetworkSecurityException(e, sys) from e
