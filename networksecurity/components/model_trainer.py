@@ -134,13 +134,11 @@ class ModelTrainer:
             save_object(
                 self.model_trainer_config.trained_model_file_path, obj=NetworkModel
             )
-            # save_object(
-            #     self.model_trainer_config.trained_model_file_path, obj=NetworkModel
-            # )
-            # model pusher
             save_object(
-                self.model_trainer_config.trained_model_file_path, obj=best_model
+                self.model_trainer_config.trained_model_file_path, obj=NetworkModel
             )
+            # model pusher
+            save_object("final_model/model.pkl", best_model)
 
             ## Model Trainer Artifact
             model_trainer_artifact = ModelTrainerArtifact(
